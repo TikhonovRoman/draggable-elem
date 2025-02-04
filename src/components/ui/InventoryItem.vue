@@ -5,7 +5,6 @@
 <script setup>
 import { useInventoryStore } from "@/stores/inventory";
 const inventoryStore = useInventoryStore();
-
 defineProps({
     inventory: {
         type: Object,
@@ -16,7 +15,6 @@ defineProps({
         })
     }
 })
-
 </script>
 
 <style scoped>
@@ -24,7 +22,7 @@ defineProps({
     width: 50%;
     height: 50%;
     position: relative;
-    cursor:grab;
+    cursor: grab;
 }
 
 .objects::after {
@@ -35,5 +33,6 @@ defineProps({
     position: absolute;
     top: -11%;
     right: -11%;
+    z-index: var(--zIndex);
 }
 </style>

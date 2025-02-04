@@ -25,26 +25,27 @@ export const useInventoryStore = defineStore('inventoryStore', () => {
         },
         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
     ])
-    const choisedItem = (id) => {
-        if (id) {
-            indexChoisedItem.value = inventory.value.map(item => item.id).indexOf(id)
-            showModal.value = true
-        }else{
-            showModal.value = false
-        }
-
-    }
     onMounted(() => {
         if (!!localStorage['inventory']) {
             inventory.value = JSON.parse(localStorage.getItem('inventory'))
         }
     })
-
     watch(inventory,
         () => {
             localStorage.setItem('inventory', JSON.stringify(inventory.value))
         },
         { deep: true }
     )
-    return { inventory, isLoading,showModal, choisedItem, indexChoisedItem }
+    const choisedItem = (id) => {
+        if (id) {
+            indexChoisedItem.value = inventory.value.map(item => item.id).indexOf(id)
+            showModal.value = true
+        } else {
+            showModal.value = false
+        }
+    }
+    function remove(count) {
+        inventory.value[indexChoisedItem.value].count = inventory.value[indexChoisedItem.value].count - count
+    }
+    return { inventory, isLoading, showModal, choisedItem, remove, indexChoisedItem }
 })

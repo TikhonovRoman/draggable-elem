@@ -1,9 +1,11 @@
 <template>
         <div class="close"></div>
 </template>
-<style scoped>
+<style>
 .close {
     position: absolute;
+    width: 100%;
+    height: 100%;
     top: 14px;
     right: 14px;
     width: .75em;

@@ -1,6 +1,6 @@
 <template>
     <div class="inventory">
-        <draggable v-model="inventoryStore.inventory" :move="handleMove" @end="handleDragEnd" itemKey="id" class="wrap">
+        <draggable v-model="inventoryStore.inventory" :force-fallback="true" :move="handleMove" @end="handleDragEnd" itemKey="id" class="wrap">
             <template #item="{ element }" >
                 <div class="item" @click="inventoryStore.choisedItem(element.id)"> 
                     <InventoryItem v-if="element.count > 0" :inventory="element"></InventoryItem>
@@ -48,8 +48,8 @@ const handleDragEnd = () => {
     height: 100%;
     position: relative;
     border-radius: 0.75em;
-    border: 1px solid;
     overflow: hidden;
+    
 }
 
 .wrap {
@@ -62,17 +62,18 @@ const handleDragEnd = () => {
 }
 
 .sortable-chosen {
-    background-color: #242424;
     opacity: 1 !important;
-    border: 1px solid rgba(77, 77, 77, 1);
-    border-radius: 24px !important;
+    border: 1px solid;
+    border-radius: 24px;
     overflow: hidden;
     cursor: grabbing;
 }
 
 .sortable-ghost {
-    border-radius: 0 !important;
+    border-radius: 0;
 }
+
+.sortable-drag{}
 
 .item {
     display: flex;
@@ -80,7 +81,7 @@ const handleDragEnd = () => {
     align-items: center;
     width: 100%;
     height: 100%;
-    outline: 1px solid rgba(77, 77, 77, 1);
+    outline: 1px solid ;
     position: relative;
     cursor: pointer;
 }

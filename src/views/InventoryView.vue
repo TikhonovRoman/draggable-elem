@@ -12,7 +12,6 @@ import Sidebar from '../components/sidebar.vue';
     </div>
 </template>
 
-
 <style scoped>
 .container {
     display: grid;
@@ -23,6 +22,7 @@ import Sidebar from '../components/sidebar.vue';
     padding: 2em;
     margin: 0 auto;
 }
+
 .footer {
     grid-column: 1/3;
 }
